@@ -1,16 +1,18 @@
 {
-  "name": "Star-Admin-Free",
+  "name": "vfriend",
   "version": "2.0.0",
-  "description": "",
+  "description": "vfriend",
   "main": "index.html",
   "dependencies": {
     "bootstrap": "4.0.0",
     "chart.js": "2.7.1",
+    "express": "^4.16.3",
     "flag-icon-css": "2.9.0",
     "font-awesome": "4.7.0",
     "gulp-sourcemaps": "^2.6.3",
     "jquery": "3.2.1",
     "mdi": "2.1.19",
+    "mysql": "^2.16.0",
     "popper.js": "1.12.9",
     "simple-line-icons": "2.4.1"
   },
@@ -31,10 +33,22 @@
   },
   "scripts": {
     "clean": "rm -rf ./node_modules",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "bootstrapdash",
   "url": "http://www.bootstrapdash.com/",
   "copyright": "",
-  "license": ""
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cbgamefreak/vFriend.git"
+  },
+  "keywords": [
+    "vfriend"
+  ],
+  "bugs": {
+    "url": "https://github.com/Cbgamefreak/vFriend/issues"
+  },
+  "homepage": "https://github.com/Cbgamefreak/vFriend#readme"
 }
