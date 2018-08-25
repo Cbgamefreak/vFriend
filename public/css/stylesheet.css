@@ -1,0 +1,93 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+textarea{
+    resize: none;
+}
+
+#navHeader{
+    background:#4B0082;
+    height: 50px;
+}
+
+#settings{
+    margin-top: -50px;
+    float: right;
+}
+
+.nav-pills > li > a.active {
+    background-color: #7700cf!important;
+   
+}
+
+#logo{
+    height:100px;
+    width:75px;
+}
+#links{
+    margin-top: 5px;
+    color: white;
+}
+#newPost{
+    width: 650px;
+    height: 100px;
+    margin-left:20%;
+    margin-right:20%;
+    margin-top:50px;
+}
+
+#timeline{
+  height: 200px;
+  width: 650px;
+ margin-left:20%;
+  
+}
+
+#submitPost{
+    position:absolute;
+    left:790px;
+    top: 135px;
+    background: #4B0082;
+}
+
+footer{
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    background: #4B0082;
+}
+
+#bioColor{
+    color:rgba(148, 148, 148, 0.603);
+    font-weight: bold;
+    font-size: 18px;
+  };
+
+  #vfbtn{
+      background: #7700cf;
+      color: white;
+      
+  }
+
+  .left, .right {
+    padding: 0;
+  }
+  .left .list-group-item {
+      border-right: none;
+  }
+  .left .list-group-item:first-child {
+      border-top-right-radius: 0;
+  }
+  .left .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+  }     
+  .right .list-group-item:first-child {
+      border-top-left-radius: 0;
+  }   
+  .right .list-group-item:last-child {
+      border-bottom-left-radius: 0;
+  }
+ 

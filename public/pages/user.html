@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vriend</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/stylesheet.css">
+
+</head>
+
+<body>
+    <ul class="nav nav-pills" id="navHeader">
+        <a class="nav-link" href="/newsFeed">
+            <img src="images/vfriend.png" id="logo" alt="logo">
+        </a>
+        <li class="nav-item">
+            <a class="nav-link" href="/newsFeed" id="links">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile" id="links">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/all-users" id="links">Members</a>
+        </li>
+    </ul>
+
+    <ul class="nav justify-content-right" id="settings">
+        <li> <a class="nav-link" href="/profile">
+                <span class="profile-text current-log2"></span>
+                <img class="mini-profile-image img-xs rounded-circle" src="https://via.placeholder.com/40x40" alt="Profile image" width="40px"
+                    height="40px">
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+                style="color:white;">Settings</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit Profile</a>
+                <a class="dropdown-item" href="/login">Sign Out</a>
+        </li>
+    </ul>
+
+
+    <!-- User Profile Table -->
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-3 mx-5">
+                <img class="main-profile-image">
+            </div>
+            <div class="col-md-1">
+                <span id="bioColor">Bio</span>
+            </div>
+            <!--Ends biocolor-->
+
+
+            <div class="col-md-5">
+                <b>Name: <span class="info-name"></span></b>
+                <br><b>Birthday: <span class="info-birthday"></span></b>
+                <br><b>Gender: <span class="info-gender"></span></b>
+                <br><b>Username: <span class="info-username"></span></b>
+                <br><b>E-Mail: <span class="info-email"></span></b>
+                <br><b>Posts: <span class="info-posts"></span></b>
+            </div>
+            <!--Ends Col-md-5-->
+        </div>
+        <!--Ends Row-->
+    </div>
+    <!--Ends Container-->
+    <!-- content-wrapper ends -->
+
+
+    <footer></footer>
+</body>
+<script src="../vendors/js/vendor.bundle.base.js"></script>
+<script src="../vendors/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+
+<!-- inject:js -->
+<script src="js/off-canvas.js"></script>
+<script src="js/misc.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../js/dashboard.js"></script>
+<!-- End custom js for this page-->
+<script src="../js/userInfo.js" type="text/javascript"></script>
+<script src="../js/profile.js" type="text/javascript"></script>
+<script src="../js/survey.js" type="text/javascript"></script>
+
+</html>
