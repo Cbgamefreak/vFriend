@@ -14,56 +14,68 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="icon" type="image/png" href="../images/vfriendicon.png">
 
 </head>
 
 <body>
-    <ul class="nav nav-pills" id="navHeader">
-        <a class="nav-link" href="/newsFeed">
-            <img src="images/vfriend.png" id="logo" alt="logo">
-        </a>
-        <li class="nav-item">
-            <a class="nav-link" href="/newsFeed" id="links">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/profile" id="links">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/all-users" id="links">Members</a>
-        </li>
-    </ul>
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/newsFeed" id="logo">Vriend</a>
+            <ul class="navbar-nav nav-pills mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/newsfeed">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/profile">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/all-users">Members</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="searchBarInput" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBarSubmit">Search</button>
+            </form>
 
-    <ul class="nav justify-content-right" id="settings">
-        <li> <a class="nav-link" href="/profile">
-                <span class="profile-text current-log2"></span>
-                <img class="mini-profile-image img-xs rounded-circle" src="https://via.placeholder.com/40x40" alt="Profile image" width="40px"
-                    height="40px">
-            </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
-                style="color:white;">Settings</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Edit Profile</a>
-                <a class="dropdown-item" href="/login">Sign Out</a>
-        </li>
-    </ul>
+            <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/profile"><span class="profile-text current-log2"></span>
+                        <img class="mini-profile-image img-xs rounded-circle" src="https://via.placeholder.com/40x40" alt="Profile image" width="40px"
+                            height="40px">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/login">Sign Out</a>
+                </li>
 
+            </ul>
+        </div>
+    </nav>
 
-    <!-- User Profile Table -->
-    <div class="container mt-5 pt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-3 mx-5">
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+            <div class="col-md-2">
+                <!-- Friends stuff -->
+                <ul class="user-friends">
+                    <h4 id="friends-title">Friends <span id="num-of-friends"></span></h4>
+
+                </ul>
+            </div>
+            <div class="col-md-4">
                 <img class="main-profile-image">
             </div>
             <div class="col-md-1">
                 <span id="bioColor">Bio</span>
             </div>
-            <!--Ends biocolor-->
 
-
-            <div class="col-md-5">
+            <div class="col-md-5 profile-info">
                 <b>Name: <span class="info-name"></span></b>
                 <br><b>Birthday: <span class="info-birthday"></span></b>
                 <br><b>Gender: <span class="info-gender"></span></b>
@@ -71,9 +83,35 @@
                 <br><b>E-Mail: <span class="info-email"></span></b>
                 <br><b>Posts: <span class="info-posts"></span></b>
             </div>
-            <!--Ends Col-md-5-->
+
+
         </div>
-        <!--Ends Row-->
+
+        <div class="row" style="margin-top: 10px">
+
+
+
+            <div class="col-md-9">
+
+                <div class="form postForm2">
+                    <label for="newPost"></label>
+                    <textarea class="form-control" id="newPost" rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary mb-2 float-right" id="submitPost">Post</button>
+                </div>
+
+
+
+                <div class="post-container" style="margin-top: 10px">
+                    <div id="timeline">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!--ends col-lg-8-->
+        </div>
     </div>
     <!--Ends Container-->
     <!-- content-wrapper ends -->
@@ -93,7 +131,7 @@
 <script src="../js/dashboard.js"></script>
 <!-- End custom js for this page-->
 <script src="../js/userInfo.js" type="text/javascript"></script>
-<script src="../js/profile.js" type="text/javascript"></script>
+
 <script src="../js/survey.js" type="text/javascript"></script>
 
 </html>

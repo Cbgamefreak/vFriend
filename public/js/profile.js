@@ -3,23 +3,90 @@ var currentUsername;
 if (!currentUserID) {
   //window.location.href = "/"
 }
-
+localStorage.removeItem("searched-user")
 $(document).ready(function () {
 
-
-  // Get the modal
-  // Getting references to the name input and author container, as well as the table body
+  // Get the modal\
+  //set some global variables
   var nameInput = $("#author-name");
-  var authorList = $("tbody");
   var authorContainer = $(".author-container");
   var newPostDiv = $("#newPost")
   var authorId;
+  var posts;
   var postsContainer = $("#timeline")
-  // Adding event listeners to the form to create a new object, and the button to delete
-  // an Author
-  $(document).on("submit", "#author-form", handleAuthorFormSubmit);
-  $(document).on("click", ".delete-author", handleDeleteButtonPress);
+  var friendsApiArr = [];
+ var friendsDataArr = [];
 
+ //first we get all authors an log data into the correct fields to display on the navbar
+  $.get("/api/authors/" + currentUserID, function (data) {
+    // console.log(data + "dataaaa")
+    console.log(data.name)
+    var userN = data.name;
+    localStorage.setItem("username", data.name);
+    currentUsername = localStorage.getItem("username")
+    console.log(currentUsername)
+    var userName = userN.toUpperCase();
+    $(".current-log").html(userName);
+    $(".current-log2").html("Hello " + userName + "!");
+    var imgDiv = $("#user-image");
+    var userImg = $("<img>");
+    userImg.css("height", "100px");
+    userImg.css("width", "200px");
+    userImg.attr("src", data.profileImage);
+    imgDiv.append(userImg);
+    $(".mini-profile-image").attr("src", data.profileImage);
+   getFriends();
+  });
+
+//then we get all friends with a GET
+  function getFriends() {
+    friendsApiArr = [];
+    friendsDataArr = [];
+    $.get("/api/friends/", function (data) {
+        console.log(data);
+        //for loop parses through the data only adding the friends of the current user to the friednsApiArray
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].currentUser == currentUserID && friendsApiArr.includes(parseInt(data[i].followedUser)) == false) {
+                console.log(data[i].followedUser)
+                friendsApiArr.push(parseInt(data[i].followedUser))
+            }
+        }
+        console.log(friendsApiArr);
+       // $("#num-of-friends").html(friendsApiArr.length);
+
+        getAllAuthors()
+    });
+}
+//afterwards we get all authors and only grab posts from them if the friendsAPIarray contains their ID
+function getAllAuthors() {
+  var allPosts = []
+    $.get("/api/authors/", function (data) {
+        console.log(data + "author data");
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i].Posts)
+           
+            console.log(friendsApiArr)
+            if (friendsApiArr.includes(parseInt(data[i].id)) || data[i].id == currentUserID) {
+                  for (var x = 0; x < data[i].Posts.length; x++) {
+                    allPosts.push(data[i].Posts[x]);
+                  }
+                }
+
+
+            
+        }
+        console.log(friendsDataArr)
+        console.log(allPosts)
+        //reverse the posts to make the newest ones first
+        var reversedPosts = allPosts.reverse()
+        //we then create the posts from the reversedPosts array
+        initializeRows(reversedPosts)
+    });
+
+
+
+}
+//when the user clicks submit post it takes
   $(document).on("click", "#submitPost", function () {
     event.preventDefault();
     var newPostText = {
@@ -30,46 +97,31 @@ $(document).ready(function () {
     console.log("you clicked it")
     console.log(newPostText)
     submitPost(newPostText);
+    newPostDiv.val("")
   })
 
   function submitPost(post) {
     console.log("Test1")
     $.post("/api/posts", post, function () {
-      getPosts(currentUserID)
+      getFriends()
       console.log("test2")
     });
   }
 
-  function getPosts(author) {
-    console.log("test3")
-    authorId = author || "";
-    if (authorId) {
-      authorId = "/?author_id=" + authorId;
-    }
-    $.get("/api/posts" + authorId, function (data) {
-      console.log("Posts", data);
-      posts = data.reverse();
-      if (!posts || !posts.length) {
 
-        displayEmpty();
-      }
-      else {
-        initializeRows();
-      }
-    });
-  }
-  getPosts(currentUserID)
+  
 
 
-  function initializeRows() {
+  function initializeRows(posts) {
     postsContainer.empty();
     var postsToAdd = [];
     for (var i = 0; i < posts.length; i++) {
       postsToAdd.push(createNewRow(posts[i]));
     }
     postsContainer.append(postsToAdd);
+    
   }
-
+ 
 
   // This function constructs a post's HTML
   function createNewRow(post) {
@@ -89,7 +141,7 @@ $(document).ready(function () {
     var editBtn = $("<button>");
     editBtn.text("EDIT");
     editBtn.attr("clicker", post.id);
-    editBtn.addClass("edit-post btn btn-info");
+    editBtn.addClass("edit-post btn btn-secondary");
     var newPostBody = $("<h4>");
     var newPostAuthor = $("<h5>");
     var newPostDate = $("<small>");
@@ -101,18 +153,21 @@ $(document).ready(function () {
     newPostCardHeading.append(newPostAuthor);
     newPostCardHeading.append(newPostDate);
     newPostCardHeading.append("<br>")
-    newPostCardHeading.append(editBtn);
-    newPostCardHeading.append(deleteBtn);
+   if(post.postedBy == currentUsername) {newPostCardHeading.append(editBtn); newPostCardHeading.append(deleteBtn);};
+    
     newPostCard.append(newPostCardHeading);
+    var brkline = $("<br>");
+    newPostCard.append(brkline);
+   
     newPostCard.data("post", post);
     return newPostCard;
   }
-
+//displays text if there arent any posts for the user
   function displayEmpty() {
     postsContainer.empty();
     postsContainer.append("<h3>You have no posts yet, make your first post above!</h3>")
   }
-
+//this function uses a .delete request to delete the post from the posts table
   $(document).on("click", ".delete-post", function () {
     event.preventDefault();
     console.log("delete-test")
@@ -123,18 +178,28 @@ $(document).ready(function () {
       url: "/api/posts/" + deleteID
     })
       .then(function () {
-        getPosts(currentUserID);
+        getFriends();
       });
 
   });
 
-
+//edit 
   $(document).on("click", ".edit-post", function () {
-    console.log("edit-test")
+
     event.preventDefault();
     var editID = $(this).attr("clicker");
     var postToEdit = $("#" + editID);
     postToEdit.empty();
+    console.log(editID)
+    var editText;
+    for (var i = 0; i < posts.length; i++){
+      console.log(posts[i])
+      if (posts[i].id == editID){
+        editText = posts[i].body
+      }
+    }
+    
+    console.log(editText)
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
     var updateBtn = $("<button>");
@@ -146,6 +211,7 @@ $(document).ready(function () {
     exitBtn.attr("clicker", editID);
     exitBtn.addClass("cancel-update btn btn-danger");
     var newPostUpdate = $("<textarea>");
+    newPostUpdate.val(editText)
     newPostUpdate.addClass("update-textarea " + editID)
     newPostUpdate.addClass("update-textarea")
     newPostCardHeading.append(newPostUpdate);
@@ -171,7 +237,7 @@ $(document).ready(function () {
 
   $(document).on("click", ".cancel-update", function () {
     console.log("cancel-test")
-    getPosts(currentUserID)
+    getFriends()
   });
 
   function updatePost(post) {
@@ -181,44 +247,14 @@ $(document).ready(function () {
       data: post
     })
       .then(function () {
-        getPosts(currentUserID);
+        getFriends();
       });
   }
   // Getting the initial list of Authors
   //getAuthors();
   console.log(currentUserID);
   // A function to handle what happens when the form is submitted to create a new Author
-  function handleAuthorFormSubmit(event) {
-    event.preventDefault();
-    // Don't do anything if the name fields hasn't been filled out
-    if (!nameInput.val().trim().trim()) {
-      return;
-    }
-    // Calling the upsertAuthor function and passing in the value of the name input
-    upsertAuthor({
-      name: nameInput.val().trim()
 
-    });
-  }
-  $.get("/api/authors/" + currentUserID, function (data) {
-    // console.log(data + "dataaaa")
-    console.log(data.name)
-    var userN = data.name;
-    localStorage.setItem("username", data.name);
-    currentUsername = localStorage.getItem("username")
-    console.log(currentUsername)
-    var userName = userN.toUpperCase();
-    $(".current-log").html(userName);
-    $(".current-log2").html("Hello " + userName + " !");
-    var imgDiv = $("#user-image");
-    var userImg = $("<img>");
-    userImg.css("height", "100px");
-    userImg.css("width", "200px");
-    userImg.attr("src", data.profileImage);
-    imgDiv.append(userImg);
-    $(".mini-profile-image").attr("src", data.profileImage);
-
-  });
 
 
 
@@ -227,61 +263,12 @@ $(document).ready(function () {
     $.post("/api/authors", authorData)
       .then(getAuthors);
   }
+  $("#searchBarSubmit").on("click", function(){
+    event.preventDefault();
+    var searchInput = $("#searchBarInput").val().trim();
+    localStorage.setItem("searched-user", searchInput)
+    window.location = "/all-users";
+    $("#searchBarInput").val("");
+  });
 
-  // Function for creating a new list row for authors
-  function createAuthorRow(authorData) {
-    console.log(authorData);
-    var newTr = $("<tr>");
-    newTr.data("author", authorData);
-    newTr.append("<td>" + authorData.name + "</td>");
-    newTr.append("<td> " + authorData.Posts.length + "</td>");
-    newTr.append("<td><a href='/blog?author_id=" + authorData.id + "'>Go to Posts</a></td>");
-    newTr.append("<td><a href='/cms?author_id=" + authorData.id + "'>Create a Post</a></td>");
-    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-author'>Delete Author</a></td>");
-    return newTr;
-  }
-
-  // Function for retrieving authors and getting them ready to be rendered to the page
-  function getAuthors() {
-    $.get("/api/authors", function (data) {
-      var rowsToAdd = [];
-      for (var i = 0; i < data.length; i++) {
-        rowsToAdd.push(createAuthorRow(data[i]));
-      }
-      renderAuthorList(rowsToAdd);
-      nameInput.val("");
-    });
-  }
-
-  // A function for rendering the list of authors to the page
-  function renderAuthorList(rows) {
-    authorList.children().not(":last").remove();
-    authorContainer.children(".alert").remove();
-    if (rows.length) {
-      console.log(rows);
-      authorList.prepend(rows);
-    }
-    else {
-      renderEmpty();
-    }
-  }
-
-  // Function for handling what to render when there are no authors
-  function renderEmpty() {
-    var alertDiv = $("<div>");
-    alertDiv.addClass("alert alert-danger");
-    alertDiv.text("You must create an Author before you can create a Post.");
-    authorContainer.append(alertDiv);
-  }
-
-  // Function for handling what happens when the delete button is pressed
-  function handleDeleteButtonPress() {
-    var listItemData = $(this).parent("td").parent("tr").data("author");
-    var id = listItemData.id;
-    $.ajax({
-      method: "DELETE",
-      url: "/api/authors/" + id
-    })
-      .then(getAuthors);
-  }
 });

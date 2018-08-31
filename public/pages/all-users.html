@@ -8,85 +8,71 @@
     <title>Vriend</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="icon" type="image/png" href="../images/vfriendicon.png">
 
 </head>
 
 <body>
-    <ul class="nav nav-pills" id="navHeader">
-        <a class="nav-link" href="/newsFeed">
-            <img src="images/vfriend.png" id="logo" alt="logo">
-        </a>
-        <li class="nav-item">
-            <a class="nav-link" href="/newsFeed" id="links">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/profile" id="links">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/all-users" id="links">Members</a>
-        </li>
-    </ul>
 
-    <ul class="nav justify-content-right" id="settings">
-        <li>
-            <a class="nav-link" href="/profile">
-                <span class="profile-text current-log2"></span>
-                <img class="mini-profile-image img-xs rounded-circle" src="https://via.placeholder.com/40x40" alt="Profile image" width="40px"
-                    height="40px">
-            </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
-                style="color:white;">Settings</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Edit Profile</a>
-                <a class="dropdown-item" href="/login">Sign Out</a>
-        </li>
-    </ul>
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/newsFeed" id="logo">Vriend</a>
+            <ul class="navbar-nav nav-pills mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/newsfeed">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/profile">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white active" href="/all-users">Members</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="searchBarInput" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBarSubmit">Search</button>
+            </form>
+
+            <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/profile"><span class="profile-text current-log2"></span>
+                        <img class="mini-profile-image img-xs rounded-circle" src="https://via.placeholder.com/40x40" alt="Profile image" width="40px"
+                            height="40px">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/login">Sign Out</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
 
     <!-- Starts New Post -->
-    <div class="container" >
+    <div class="container">
         <div class="row">
-            
-          <div class="col-sm-3"> 
-                <!-- <ul class="list-group justify-content-center ml-5" style="margin-top:100px;">
-                    <li class="list-group-item">
-                        <img src="https://via.placeholder.com/80x80"> USERNAME
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 125px; top:35px; background:#4B0082; color:white;">View
-                            Profile</button>
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 20px; top:35px; background:#7700cf; color:white;">Follow</button>
-                    </li>
-                    <li class="list-group-item">
-                        <img src="https://via.placeholder.com/80x80"> USERNAME
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 125px; top:35px; background:#4B0082; color:white;">View
-                            Profile</button>
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 20px; top:35px; background:#7700cf; color:white;">Follow</button>
-                    </li>
-                </ul> -->
+
+            <div class="col-sm-3">
+
             </div>
             <div class="col-sm-6">
-                <ul class="list-group justify-content-center mr-5  users-container" style="margin-top:100px;">
-                    
-                        <!-- <img src="https://via.placeholder.com/80x80"> USERNAME
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 125px; top:35px; background:#4B0082; color:white;">View
-                            Profile</button>
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 20px; top:35px; background:#7700cf; color:white;">Follow</button> -->
-                    
-                    <!-- <li class="list-group-item">
-                        <img src="https://via.placeholder.com/80x80"> USERNAME
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 125px; top:35px; background:#4B0082; color:white;">View
-                            Profile</button>
-                        <button type="button" class="btn pull-right" id="vfbtn" style="position: absolute; right: 20px; top:35px; background:#7700cf; color:white;">Follow</button>
-                    </li> -->
+                <ul class="list-group justify-content-center mr-5  users-container" style="margin-top:80px;">
+
                 </ul>
-        
+
             </div>
 
             <!--ends col-sm-6-right-->
@@ -95,7 +81,25 @@
         <!--row-->
     </div>
 
-   
+    <div id="search-modal" class="modal fade">
+        <div class="modal-dialog"></div>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h2 class="modal-title">
+                    <strong> <span id="searchBarModal"></span> </strong>
+                </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+
 </body>
 <script src="../vendors/js/vendor.bundle.base.js"></script>
 <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -105,6 +109,6 @@
 <!--ends container-->
 <footer></footer>
 <script src="../js/all-users.js" type="text/javascript"></script>
-<script src="../js/profile.js" type="text/javascript"></script>
-<script src="../js/survey.js" type="text/javascript"></script>
+
+
 </html>

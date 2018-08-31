@@ -1,45 +1,28 @@
 {
-  "name": "vfriend",
-  "version": "2.0.0",
-  "description": "vfriend",
-  "main": "index.html",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "bootstrap": "4.0.0",
-    "chart.js": "2.7.1",
-    "express": "^4.16.3",
-    "flag-icon-css": "2.9.0",
-    "font-awesome": "4.7.0",
-    "fs": "0.0.1-security",
-    "gulp-sourcemaps": "^2.6.3",
-    "jquery": "3.2.1",
-    "mdi": "2.1.19",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.6.1",
-    "path": "^0.12.7",
-    "popper.js": "1.12.9",
-    "sequelize": "^4.38.0",
-    "simple-line-icons": "2.4.1"
-  },
-  "devDependencies": {},
+  "name": "vfriendbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "clean": "rm -rf ./node_modules",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "bootstrapdash",
-  "url": "http://www.bootstrapdash.com/",
-  "copyright": "",
-  "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cbgamefreak/vFriend.git"
+    "url": "git+https://github.com/blopes1989/vfriendbook.git"
   },
-  "keywords": [
-    "vfriend"
-  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Cbgamefreak/vFriend/issues"
+    "url": "https://github.com/blopes1989/vfriendbook/issues"
   },
-  "homepage": "https://github.com/Cbgamefreak/vFriend#readme"
+  "homepage": "https://github.com/blopes1989/vfriendbook#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql2": "^1.6.1",
+    "path": "^0.12.7",
+    "sequelize": "^4.38.0"
+  }
 }

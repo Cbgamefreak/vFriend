@@ -12,7 +12,7 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
+  // routes below are pretty self explanitory
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/pages/login.html"));
   });
@@ -36,6 +36,10 @@ module.exports = function(app) {
 
   app.get("/all-users", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/pages/all-users.html"));
+  });
+  
+  app.get("/other-user/:id", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/pages/other-user.html"));
   });
 
 

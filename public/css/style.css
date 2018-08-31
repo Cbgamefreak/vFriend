@@ -8490,6 +8490,10 @@ ul {
       background-size: cover; }
 
 /* Error */
+.error-page{
+  background-color: white,
+}
+
 .error-page h1 {
   font-size: 9.375rem;
   line-height: 1; }
@@ -8511,5 +8515,6 @@ ul {
     font-weight: bold;
     font-size: 18px;
   };
+
 
 /*# sourceMappingURL=maps/style.css.map */

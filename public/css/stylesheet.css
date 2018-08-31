@@ -1,15 +1,73 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    height:100%;
+    padding-bottom: 45px;
 }
 
 textarea{
     resize: none;
 }
 
-#navHeader{
+.navbar{
     background:#4B0082;
-    height: 50px;
+   
+}
+
+#newsF-title {
+    color: #4B0082;
+    font-weight: bold;
+}
+
+.navbar-collapse {
+    background-color: #4B0082;
+    z-index: 9999;
+}
+
+.profile-info {
+    background-color: #7700cf;
+    padding: 15px;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+    height: 180px;
+    width: auto;
+    
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.user-friends {
+    height:200px;
+    overflow: auto;
+
+    
+}
+
+.postForm {
+    background-color: #4B0082;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#friends-title {
+    background-color:  #7700cf;
+    border: solid black 1px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+}
+
+.postForm2 {
+    background-color: #4B0082;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    width: auto;
+    margin-left: 200px;
 }
 
 #settings{
@@ -23,33 +81,41 @@ textarea{
 }
 
 #logo{
-    height:100px;
-    width:75px;
+    font-family: 'Poller One', cursive;
+    color: white;
 }
+
 #links{
     margin-top: 5px;
     color: white;
 }
+
+#timeline2 {
+    margin-left: 200px;
+}
+
 #newPost{
-    width: 650px;
-    height: 100px;
-    margin-left:20%;
-    margin-right:20%;
-    margin-top:50px;
+   
+    margin-bottom:20px;
+    
 }
 
 #timeline{
-  height: 200px;
-  width: 650px;
- margin-left:20%;
+    height: 200px;
+    width: 650px;
+    margin-left:20%;
+ 
   
 }
 
 #submitPost{
-    position:absolute;
-    left:790px;
-    top: 135px;
-    background: #4B0082;
+    margin-left: 00px;
+    margin-top: -58px;
+    background: #7700cf;
+}
+
+#submitPost:hover {
+    background-color: #00a86b;
 }
 
 footer{
@@ -64,6 +130,9 @@ footer{
     color:rgba(148, 148, 148, 0.603);
     font-weight: bold;
     font-size: 18px;
+    padding: 15px;
+    border-radius: 15px;
+    
   };
 
   #vfbtn{
@@ -90,4 +159,6 @@ footer{
   .right .list-group-item:last-child {
       border-bottom-left-radius: 0;
   }
+
+
  
